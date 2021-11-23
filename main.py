@@ -1,5 +1,6 @@
 import sys
 from PyQt5 import uic
+from random import choice, randint
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5.QtGui import QPainter, QBrush, QPen
 from PyQt5.QtCore import Qt
@@ -15,6 +16,8 @@ class MyWidget(QMainWindow):
 
     def click(self):
         self.k = 1
+        self.x = randint(100, 200)
+        self.y = randint(100, 200)
 
     def paintEvent(self, e):
         qp = QPainter()
@@ -25,8 +28,8 @@ class MyWidget(QMainWindow):
     def drawRectangles(self, qp):
         if self.k == 1:
             qp.setPen(QPen(Qt.green, 8, Qt.SolidLine))
-            qp.setBrush(QBrush(Qt.red))
-            qp.drawEllipse(20, 20, 100, 100)
+            qp.setBrush(QBrush(Qt.yellow))
+            qp.drawEllipse(20, 20, self.x, self.y)
             self.update()
 
 
